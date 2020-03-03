@@ -2,9 +2,13 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongosse = require('mongoose');
 
 const app = express();
 const router = express.Router();
+
+//Conecta ao banco
+mongosse.connect('mongodb+srv://balta:balta@ndstr-7pz3g.azure.mongodb.net/test?retryWrites=true&w=majority')
 
 //Carrega as Rotas
 const indexRoute = require('./routes/index-route');

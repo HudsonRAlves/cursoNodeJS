@@ -10,6 +10,16 @@ exports.get = (req, res, next) => {
         res.status(200).send(data);
     }).catch(e => { 
         res.status(400).send(e);
+    }); 
+};
+
+exports.getBySlug = (req, res, next) => {
+    Product
+    .findOne({slug: req.params.slug, active: true}, 'title description price slug tags')
+    .then(data => { 
+        res.status(200).send(data);
+    }).catch(e => { 
+        res.status(400).send(e);
     });
 };
 

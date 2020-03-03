@@ -3,10 +3,21 @@
 const mongosse = require('mongoose');
 const Product = mongosse.model('Product');
 
+exports.get = (req, res, next) => {
+    Product
+    .find({active: true}, 'title price slug')
+    .then(data => { 
+        res.status(200).send(data);
+    }).catch(e => { 
+        res.status(400).send(e);
+    });
+};
+
 exports.post = (req, res, next) => {
     var product = new Product(req.body);
     product
-        .save().then(x => { 
+        .save()
+        .then(x => { 
             res.status(200).send({ message: 'Produto Cadastrado com Sucesso...'});
         }).catch(e => { 
             res.status(400).send({ message: 'Falha ao Cadastrado o Produto...', data: e});

@@ -1,15 +1,15 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const Shema = mongoose.Shema;
+const Schema = mongoose.Schema;
 
-const shema = new Shema({
+const schema = new Schema({
     title:{
         type: String,
         required: true,
         trim: true
     }, 
-    slug: {
+    slug: { 
         type: String, 
         required: true, 
         trim: true, 
@@ -35,4 +35,4 @@ const shema = new Shema({
     }]
 });
 
-module.exports = mongoose.model('Product', shema);
+module.exports = mongoose.model('Product', schema);
